@@ -53,7 +53,7 @@ public class UploadCVController extends HttpServlet {
             StudentDTO student = StudentDAO.getStudentByAccount(account.getAccId());
             if (!fileName.isEmpty()) {
                 for (Part part : request.getParts()) {
-                    part.write("D:\\SWP391\\OJT_Management\\web\\CV\\" + fileName);
+                    part.write("D:\\SWP391\\OJT_Management-Maven\\src\\main\\webapp\\CV\\" + fileName);
                 }
                 String cvPath = "CV\\" + fileName;
                 int result = StudentDAO.updateCVPath(student.getStudentID(), cvPath);

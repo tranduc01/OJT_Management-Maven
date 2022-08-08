@@ -295,7 +295,7 @@ public class AccountDAO {
         return result;
     }
 
-    public static int updateProfile(String email, String newName, String newPhone, String newBirthday) throws SQLException {
+    public static int updateProfile(String email, String newName, String newPhone, Date newBirthday) throws SQLException {
         int result = 0;
         Connection cn = null;
         PreparedStatement pst = null;
@@ -308,7 +308,7 @@ public class AccountDAO {
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, newName);
                 pst.setString(2, newPhone);
-                pst.setString(3, newBirthday);
+                pst.setDate(3, newBirthday);
                 pst.setString(4, email);
                 pst.executeUpdate();
             }

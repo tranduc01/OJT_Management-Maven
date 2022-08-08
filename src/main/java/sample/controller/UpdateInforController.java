@@ -53,7 +53,8 @@ public class UpdateInforController extends HttpServlet {
             
             String email = (String) session.getAttribute("accEmail");
             
-            String birthday =request.getParameter("txtbirthday");         
+            Date birthday =Date.valueOf(request.getParameter("txtbirthday"));   
+            
             String success="Updated!!!";
             request.setAttribute("success", success);
             int result = AccountDAO.updateProfile(email, name, phone, birthday);  

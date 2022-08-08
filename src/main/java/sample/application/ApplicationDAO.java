@@ -29,7 +29,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [applyID],[applyDate],[stuID],[jobID],[status],[stu_confirm],[com_comfirm]\n"
+                String sql = "select applyID,applyDate,stuID,jobID,status,stu_confirm,com_comfirm\n"
                         + "from Application\n"
                         + "where stuID=?\n"
                         + "order by applyDate desc";
@@ -74,7 +74,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [applyID],[applyDate],[stuID],[jobID],[status],[stu_confirm],[com_comfirm]\n"
+                String sql = "select applyID,applyDate,stuID,jobID,status,stu_confirm,com_comfirm\n"
                         + "from Application\n"
                         + "where stuID=? and status=1\n"
                         + "order by applyDate desc";
@@ -116,7 +116,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into [Application]([status],[applyDate],[stu_confirm],[com_comfirm],[stuID],[jobID]) "
+                String sql = "insert into Application(status,applyDate,stu_confirm,com_comfirm,stuID,jobID) "
                         + "values (?,?,?,?,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
@@ -151,7 +151,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [applyID],[applyDate],[stuID],[jobID],[status],[stu_confirm],[com_comfirm]\n"
+                String sql = "select applyID,applyDate,[stuID],[jobID],[status],[stu_confirm],[com_comfirm]\n"
                         + "from Application\n"
                         + "order by applyDate desc";
                 st = cn.createStatement();

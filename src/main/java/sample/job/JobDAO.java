@@ -28,7 +28,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],[jobCreateDate],[jobEndDate],[status],amount,majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=1";
                 st = cn.createStatement();
@@ -75,8 +75,8 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "INSERT INTO [dbo].[Job] ([jobName],[jobTitle],[jobDescription],[jobRequirements],[amount],[jobBenefits],\n"
-                        + "[jobSalary],[jobCreateDate],[jobEndDate],[status],[comID],[majorID],modifyDate)\n"
+                String sql = "INSERT INTO Job (jobName,jobTitle,jobDescription,jobRequirements,amount,jobBenefits,\n"
+                        + "jobSalary,jobCreateDate,jobEndDate,status,comID,majorID,modifyDate)\n"
                         + "VALUES(?,?,?,?,?,?,?,?,?,0,?,?,?)\n";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, jobName);
@@ -113,8 +113,8 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [dbo].[Job]\n"
-                        + "set [jobName]=?,[jobTitle]=?,[jobDescription]=?,[jobRequirements]=?,[amount]=?,[jobBenefits]=?,[jobSalary]=?,[jobEndDate]=?,[status]=?,majorID=?,modifyDate=?\n"
+                String sql = "update Job\n"
+                        + "set jobName=?,jobTitle=?,jobDescription=?,jobRequirements=?,amount=?,jobBenefits=?,jobSalary=?,jobEndDate=?,status=?,majorID=?,modifyDate=?\n"
                         + "where jobID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, jobName);
@@ -152,7 +152,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=1 and jobID=?";
                 pst = cn.prepareStatement(sql);
@@ -200,7 +200,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where jobID=?";
                 pst = cn.prepareStatement(sql);
@@ -248,7 +248,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where comID=?\n"
                         + "order by modifyDate desc";
@@ -298,7 +298,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where status=1 and comID=?";
                         
@@ -348,7 +348,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=1 and majorID=?";
                 pst = cn.prepareStatement(sql);
@@ -397,7 +397,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=?\n"
                         +"order by modifyDate desc";
@@ -447,7 +447,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],amount,[jobCreateDate],[jobEndDate],[status],majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=? and comID=?\n"
                         +"order by modifyDate desc";
@@ -498,11 +498,11 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],[jobCreateDate],[jobEndDate],[status],amount,majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=1\n"
                         + "order by jobCreateDate desc\n"
-                        + "offset (? -1)* ? rows\n"
+                        + "offset ((? -1)* ?) rows\n"
                         + "fetch next ? rows only";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setInt(1, pageNumber);
@@ -552,7 +552,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],[jobCreateDate],[jobEndDate],[status],amount,majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "order by modifyDate desc\n"
                         + "offset (? -1)* ? rows\n"
@@ -604,7 +604,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Job]\n"
+                String sql = "update Job\n"
                         + "set status=?,modifyDate=?\n"
                         + "where jobID=?";
                 pst = cn.prepareStatement(sql);
@@ -634,7 +634,7 @@ public class JobDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [jobID],[jobName],[jobTitle],[jobDescription],[jobRequirements],[jobBenefits],[jobSalary],[jobCreateDate],[jobEndDate],[status],amount,majorID,comID,modifyDate\n"
+                String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n";
                 if (majorID.equals("all")) {
                     sql = sql + "where status=1 and jobName like ?";

@@ -26,7 +26,7 @@ public class CompanyDAO {
         try {
             cn=DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "SELECT [comID],[Company].accID,[comDescription],[comAddress],[bannerImage],[website],Account.email as 'Email', Account.name as 'comName'\n"
+                String sql = "SELECT comID,Company.accID,comDescription,comAddress,bannerImage,website,Account.email as Email, Account.name as comName\n"
                         + "from Company join Account on Company.accID = Account.accID\n"
                         + "where Company.accID=?";
                 pst=cn.prepareStatement(sql);
@@ -60,8 +60,8 @@ public class CompanyDAO {
         try {
             cn=DBUtils.makeConnection();
             if(cn!=null){
-                String sql = "select [comID],[comDescription],[comAddress],website,bannerImage,[accID]\n"
-                        + "from [Company]\n"
+                String sql = "select comID,comDescription,comAddress,website,bannerImage,accID\n"
+                        + "from Company\n"
                         + "where comID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, comID);
@@ -101,8 +101,8 @@ public class CompanyDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [comID],[comDescription],[comAddress],website,bannerImage,[accID]\n"
-                        + "from [Company]\n"
+                String sql = "select comID,comDescription,comAddress,website,bannerImage,accID\n"
+                        + "from Company\n"
                         + "where accID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, accID);
@@ -142,9 +142,9 @@ public class CompanyDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [comID],[comDescription],[comAddress],website,bannerImage,Company.[accID]\n"
-                        + "from [dbo].[Company] join Account on Company.accID=Account.accID\n"
-                        + "where Account.status=1";
+                String sql = "select comID,comDescription,comAddress,website,bannerImage,Account.accID\n" +
+"                        from Company join Account on Account.accID=Company.accID\n" +
+"                        where Account.status=1";
 
                 st = cn.createStatement();
 
@@ -185,8 +185,8 @@ public class CompanyDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [comID],[comDescription],[comAddress],website,bannerImage,Company.[accID]\n" +
-"                        from [dbo].[Company] join Account on Company.accID=Account.accID\n" +
+                String sql = "select comID,comDescription,comAddress,website,bannerImage,Company.accID\n" +
+"                        from Company join Account on Company.accID=Account.accID\n" +
 "                        where Account.status=1 and Account.name like ?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, "%"+keyword+"%");
@@ -227,8 +227,8 @@ public class CompanyDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [comID],[comDescription],[comAddress],website,bannerImage,[accID]\n"
-                        + "from [dbo].[Company]";
+                String sql = "select comID,comDescription,comAddress,website,bannerImage,accID\n"
+                        + "from Company";
                         
 
                 st = cn.createStatement();
@@ -269,10 +269,10 @@ public class CompanyDAO {
         try {
             cn=DBUtils.makeConnection();
             if(cn!=null){
-                String sql = "Update [Company]\n" +
-                            "set [Company].[comDescription] = ?, [Company].[comAddress]  = ?, [Company].[website] = ?\n" +
+                String sql = "Update Company\n" +
+                            "set Company.comDescription = ?, Company.comAddress  = ?, Company.website = ?\n" +
                             "from Company join Account on Company.accID = Account.accID\n" +
-                            "where [Account].email= ?";
+                            "where Account.email= ?";
                 pst=cn.prepareStatement(sql);
                 pst.setString(1, description);
                 pst.setString(2, address);
