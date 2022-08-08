@@ -27,7 +27,7 @@ public class StudentDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [stuID],cv,[Student].accID,[majorID],[semID],Account.email as 'Email',Account.name as 'stuName'\n"
+                String sql = "select stuID,cv,Student.accID,majorID,semID,Account.email as Email,Account.name as stuName\n"
                         + "from Student join Account on Student.accID=Account.accID\n"
                         + "where Student.accID=?";
                 pst = cn.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class StudentDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [stuID],cv,[Student].accID as 'accID',[majorID],[semID],Account.email as 'Email',Account.name as 'stuName'\n"
+                String sql = "select stuID,cv,Student.accID as accID,majorID,semID,Account.email as Email,Account.name as stuName\n"
                         + "from Student join Account on Student.accID=Account.accID\n"
                         + "where Student.stuID=?";
                 pst = cn.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class StudentDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [stuID],cv,[Student].accID as 'accID',[majorID],[semID],Account.email as 'Email',Account.name as 'stuName'\n"
+                String sql = "select stuID,cv,Student.accID as accID,majorID,semID,Account.email as Email,Account.name as stuName\n"
                         + "from Student join Account on Student.accID=Account.accID";
 
                 st = cn.createStatement();
@@ -148,7 +148,7 @@ public class StudentDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into Student([stuID],[accID],[majorID],[semID]) values(?,?,?,?)";
+                String sql = "insert into Student(stuID,accID,majorID,semID) values(?,?,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, stuID);
                 pst.setInt(2, accID);
@@ -176,8 +176,8 @@ public class StudentDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Student]\n"
-                        + "set [cv]=?\n"
+                String sql = "update Student\n"
+                        + "set cv=?\n"
                         + "where stuID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, newPath);
