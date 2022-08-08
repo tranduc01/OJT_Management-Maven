@@ -28,7 +28,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [accID],[email],[password],[name],[phone],[birthday],[avatar],[createDate],[roleID],[status]\n"
+                String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account";
                 st = cn.createStatement();
                 rs = st.executeQuery(sql);
@@ -71,9 +71,9 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [accID],[email],[password],[name],[phone],[birthday],[avatar],[createDate],[roleID],[status]\n"
+                String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
-                        + "where status=1 and email=? and password=? Collate Latin1_General_CS_AS";
+                        + "where status=1 and email=? and password=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 pst.setString(2, password);
@@ -116,7 +116,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [accID],[email],[password],[name],[phone],[birthday],[avatar],[createDate],[roleID],[status]\n"
+                String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
                         + "where status=1 and email=?";
                 pst = cn.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [accID],[email],[password],[name],[phone],[birthday],[avatar],[createDate],[roleID],[status]\n"
+                String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
                         + "where status=1 and Account.[accID]=?";
                 pst = cn.prepareStatement(sql);
@@ -204,7 +204,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [accID],[email],[password],[name],[phone],[birthday],[avatar],[createDate],[roleID],[status]\n"
+                String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
                         + "where Account.[accID]=?";
                 pst = cn.prepareStatement(sql);
@@ -247,8 +247,8 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Account]\n"
-                        + "set [avatar]=?\n"
+                String sql = "update Account\n"
+                        + "set avatar=?\n"
                         + "where email=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, newPath);
@@ -274,8 +274,8 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Account]\n"
-                        + "set [status]=?\n"
+                String sql = "update Account\n"
+                        + "set status=?\n"
                         + "where accID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
@@ -302,8 +302,8 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Account]\n"
-                        + "set [name]=?,phone=?,birthday=?\n"
+                String sql = "update Account\n"
+                        + "set name=?,phone=?,birthday=?\n"
                         + "where email=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, newName);
@@ -332,8 +332,8 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Account]\n"
-                        + "set [email]=?,[name]=?,[phone]=?,[birthday]=?,[status]=?\n"
+                String sql = "update Account\n"
+                        + "set email=?,name=?,phone=?,birthday=?,status=?\n"
                         + "where accID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
@@ -364,7 +364,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [Account]\n"
+                String sql = "update Account\n"
                         + "set password=?\n"
                         + "where email=?";
                 pst = cn.prepareStatement(sql);
@@ -392,7 +392,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into Account([password],[email],[name],[phone],[birthday],[createDate],[roleID],[status]) values(?,?,?,?,?,?,?,?)";
+                String sql = "insert into Account(password,email,name,phone,birthday,createDate,roleID,status) values(?,?,?,?,?,?,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, password);
                 pst.setString(2, email);
