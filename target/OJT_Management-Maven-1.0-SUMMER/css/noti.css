@@ -1,0 +1,119 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 20, 2022, 12:27:49 PM
+    Author     : Tranduc
+*/
+
+/* header notification */
+ .header__notify {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 420px;
+  border: 1px solid #d3d3d3;
+  background-color: white;
+  transform-origin: 10% top;
+  animation: headerNotifyGrowth ease-in 0.25s  ;
+  display: none;
+ }
+
+ .header__notify::before{
+  content: "";
+  border-width: 20px 20px;
+  border-style:  solid;
+  border-color: transparent transparent white transparent;
+  position: absolute;
+  left: 30px;
+  top: -40px;
+ }
+
+ .header__notify::after{
+  content: "";
+  display: block;
+  position: absolute;
+  left  : 0;
+  top: -25px;
+  width: 200px;
+  height: 20px;
+ }
+
+ @keyframes headerNotifyGrowth {
+  from{
+    opacity: 0;
+    transform: scale(0);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+ }
+
+ .header__has-notify:hover .header__notify{
+  display: block;
+ }
+
+ .header__notify-header{
+  height: 40px;
+  background-color: white;
+  user-select: none;
+ }
+
+.header__notify-header h3{
+  color: #999;
+  margin: 0 0 0 12px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 40px;
+}
+
+.header__notify-list{
+  padding-left: 0;
+  margin: 0px;
+}
+
+.header__notify-item{
+  display: flex;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.header__notify-item:hover{
+  background-color: #f7f7f7;
+}
+
+.header__notify-link{
+  text-decoration: none;
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(238, 75, 43, 0.1);
+}
+
+.header__notify-info{
+  padding-left: 30px;
+}
+
+.header__notify-company-name{
+  font-size: 1.4rem;
+  color: #000;
+  font-weight: 400;
+}
+
+.header__notify-description{
+  font-size: 12px;
+  
+  color: #999;
+}
+
+.header__notify-footer{
+  text-align: center;
+  padding: 4px;
+  background-color: #f27229;
+  
+}
+
+.header__notify-footer a{
+  text-decoration: none;
+}
