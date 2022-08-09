@@ -162,7 +162,7 @@ public class AccountDAO {
             if (cn != null) {
                 String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
-                        + "where status=1 and Account.[accID]=?";
+                        + "where status=1 and Account.accID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, accID);
                 rs = pst.executeQuery();
@@ -206,7 +206,7 @@ public class AccountDAO {
             if (cn != null) {
                 String sql = "select accID,email,password,name,phone,birthday,avatar,createDate,roleID,status\n"
                         + "from Account\n"
-                        + "where Account.[accID]=?";
+                        + "where Account.accID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, accID);
                 rs = pst.executeQuery();

@@ -597,7 +597,7 @@ public class JobDAO {
         return list;
     }
 
-    public static int updateJobStatus(int jobID, int status,String modifyDate) throws SQLException {
+    public static int updateJobStatus(int jobID, int status,Date modifyDate) throws SQLException {
         int result = 0;
         Connection cn = null;
         PreparedStatement pst = null;
@@ -609,7 +609,7 @@ public class JobDAO {
                         + "where jobID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
-                pst.setString(2, modifyDate);
+                pst.setDate(2, modifyDate);
                 pst.setInt(3, jobID);
                 pst.executeUpdate();
             }

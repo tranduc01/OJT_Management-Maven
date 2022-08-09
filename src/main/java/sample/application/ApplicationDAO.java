@@ -151,7 +151,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select applyID,applyDate,[stuID],[jobID],[status],[stu_confirm],[com_comfirm]\n"
+                String sql = "select applyID,applyDate,stuID,jobID,status,stu_confirm,com_comfirm\n"
                         + "from Application\n"
                         + "order by applyDate desc";
                 st = cn.createStatement();
@@ -195,7 +195,7 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into [Application]([status],[applyDate],[stu_confirm],[com_comfirm],[stuID],[jobID]) "
+                String sql = "insert into Application(status,applyDate,stu_confirm,com_comfirm,stuID,jobID) "
                         + "values (2,?,0,1,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setDate(1, appllyDate);
@@ -223,8 +223,8 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "UPDATE [dbo].[Application]\n"
-                        + "SET [status] = 1, [stu_confirm] = 1,[com_comfirm] = 1\n"
+                String sql = "UPDATE Application\n"
+                        + "SET status = 1, stu_confirm = 1,com_comfirm = 1\n"
                         + "WHERE Application.applyID = ?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, id);
@@ -251,8 +251,8 @@ public class ApplicationDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "UPDATE [dbo].[Application]\n"
-                        + "SET [status] = 3, [stu_confirm] = 1,[com_comfirm] = 2\n"
+                String sql = "UPDATE Application\n"
+                        + "SET status = 3, stu_confirm = 1,com_comfirm = 2\n"
                         + "WHERE Application.applyID = ?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, id);

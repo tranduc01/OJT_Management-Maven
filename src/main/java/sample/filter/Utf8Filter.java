@@ -151,7 +151,7 @@ public class Utf8Filter implements Filter {
             Date d = new Date(System.currentTimeMillis());
             for (JobDTO jobDTO : jobList) {
                 if (jobDTO.getJobEndDate().before(d)) {
-                    int result = JobDAO.updateJobStatus(jobDTO.getJobID(), 3, d.toString());
+                    int result = JobDAO.updateJobStatus(jobDTO.getJobID(), 3, d);
                 }
             }
         } catch (Exception e) {

@@ -29,8 +29,8 @@ public class MailBoxDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [boxID],[name],[email],[phone],[companyName],[major],[description],[url],status,sendDate\n"
-                        + "from [dbo].[MailBox]\n"
+                String sql = "select boxID,name,email,phone,companyName,major,description,url,status,sendDate\n"
+                        + "from MailBox\n"
                         +"order by sendDate desc";
                 st = cn.createStatement();
                 rs = st.executeQuery(sql);
@@ -73,8 +73,8 @@ public class MailBoxDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [boxID],[name],[email],[phone],[companyName],[major],[description],[url],status,sendDate\n"
-                        + "from [dbo].[MailBox]\n"
+                String sql = "select boxID,name,email,phone,companyName,major,description,url,status,sendDate\n"
+                        + "from MailBox\n"
                         + "where status=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
@@ -117,7 +117,7 @@ public class MailBoxDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into MailBox([name],[email],[phone],[companyName],[major],[description],[url],status,sendDate) values(?,?,?,?,?,?,?,?,?)";
+                String sql = "insert into MailBox(name,email,phone,companyName,major,description,url,status,sendDate) values(?,?,?,?,?,?,?,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, name);
                 pst.setString(2, email);
@@ -150,8 +150,8 @@ public class MailBoxDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "update [MailBox]\n"
-                        + "set [status]=?\n"
+                String sql = "update MailBox\n"
+                        + "set status=?\n"
                         + "where boxID=?";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);

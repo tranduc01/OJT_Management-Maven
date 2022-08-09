@@ -28,7 +28,7 @@ public class ResultDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "insert into [OJT_Result]([comment],[grade],[status],appID) values(?,?,?,?)";
+                String sql = "insert into OJT_Result(comment,grade,status,appID) values(?,?,?,?)";
                 pst = cn.prepareStatement(sql);
                 pst.setString(1, comment);
                 pst.setInt(2, grade);
@@ -56,7 +56,7 @@ public class ResultDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "UPDATE [OJT_Result]\n"
+                String sql = "UPDATE OJT_Result\n"
                         + "SET appID=?\n"
                         + "WHERE resultID = ?";
                 pst = cn.prepareStatement(sql);
@@ -85,8 +85,8 @@ public class ResultDAO {
         try {
             cn = DBUtils.makeConnection();
             if (cn != null) {
-                String sql = "select [resultID],[comment],[grade],[modifyDate],[status],[appID]\n"
-                        + "from [OJT_Result]";
+                String sql = "select resultID,comment,grade,modifyDate,status,appID\n"
+                        + "from OJT_Result";
                 st = cn.createStatement();
                 rs = st.executeQuery(sql);
                 while (rs != null && rs.next()) {

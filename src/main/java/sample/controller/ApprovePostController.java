@@ -39,7 +39,7 @@ public class ApprovePostController extends HttpServlet {
             int jobID=Integer.parseInt(request.getParameter("jobid"));
             int status=1;
             Date d=new Date(System.currentTimeMillis());
-            int result=JobDAO.updateJobStatus(jobID, status,d.toString());
+            int result=JobDAO.updateJobStatus(jobID, status,d);
             String ok="success";
             request.setAttribute("ok", ok);
             request.getRequestDispatcher("JobsPostController").forward(request, response);
