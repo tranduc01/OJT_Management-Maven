@@ -8,6 +8,7 @@ package sample.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +45,11 @@ public class UpdatePostController extends HttpServlet {
             int amount = Integer.parseInt(request.getParameter("Amount"));
             String jobBenefits = request.getParameter("jobBenefits");
             int jobSalary = Integer.parseInt(request.getParameter("jobSalary"));
-            String endDate = request.getParameter("EndDate");            
+            Date endDate = Date.valueOf(request.getParameter("EndDate"));            
             String major = request.getParameter("Major");
             int status=0;
             Date d=new Date(System.currentTimeMillis());
-            int result=JobDAO.updateJobCompany(jobTitle, jobName, jobDescription, jobRequirement, amount, jobBenefits, jobSalary, endDate, jobid, major, status, d.toString());
+            int result=JobDAO.updateJobCompany(jobTitle, jobName, jobDescription, jobRequirement, amount, jobBenefits, jobSalary, endDate, jobid, major, status, d);
             request.getRequestDispatcher("CompanyHomePageController").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();

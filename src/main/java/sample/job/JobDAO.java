@@ -69,7 +69,7 @@ public class JobDAO {
     }
 
     public static void createJobCompany(String jobTitle, String jobName, String jobDescription, String jobRequirement, int amount, String jobBenefits,
-            int jobSalary, String createDate, String endDate, int comID, String major,String modifyDate) throws SQLException {
+            int jobSalary, Date createDate, Date endDate, int comID, String major,Date modifyDate) throws SQLException {
         Connection cn = null;
         PreparedStatement pst = null;
         try {
@@ -86,11 +86,11 @@ public class JobDAO {
                 pst.setInt(5, amount);
                 pst.setString(6, jobBenefits);
                 pst.setInt(7, jobSalary);
-                pst.setString(8, createDate);
-                pst.setString(9, endDate);
+                pst.setDate(8, createDate);
+                pst.setDate(9, endDate);
                 pst.setInt(10, comID);
                 pst.setString(11, major);
-                pst.setString(12, modifyDate);
+                pst.setDate(12, modifyDate);
                 pst.executeUpdate();
             }
         } catch (Exception e) {
@@ -106,7 +106,7 @@ public class JobDAO {
     }
 
     public static int updateJobCompany(String jobTitle, String jobName, String jobDescription, String jobRequirement, int amount, String jobBenefits,
-            int jobSalary, String endDate, int jobID, String major,int status,String modifyDate) throws SQLException {
+            int jobSalary, Date endDate, int jobID, String major,int status,Date modifyDate) throws SQLException {
         int result=0;
         Connection cn = null;
         PreparedStatement pst = null;
@@ -124,10 +124,10 @@ public class JobDAO {
                 pst.setInt(5, amount);
                 pst.setString(6, jobBenefits);
                 pst.setInt(7, jobSalary);
-                pst.setString(8, endDate);
+                pst.setDate(8, endDate);
                 pst.setInt(9, status);
                 pst.setString(10, major);
-                pst.setString(11, modifyDate);
+                pst.setDate(11, modifyDate);
                 pst.setInt(12, jobID);
                 pst.executeUpdate();
             }
@@ -555,7 +555,7 @@ public class JobDAO {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "order by modifyDate desc\n"
-                        + "offset (? -1)* ? rows\n"
+                        + "offset ((? -1)* ?) rows\n"
                         + "fetch next ? rows only";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setInt(1, pageNumber);

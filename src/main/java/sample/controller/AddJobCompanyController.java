@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,10 +52,10 @@ public class AddJobCompanyController extends HttpServlet {
             int amount = Integer.parseInt(request.getParameter("Amount"));
             String jobBenefits = request.getParameter("jobBenefits");
             int jobSalary = Integer.parseInt(request.getParameter("jobSalary"));
-            String endDate = request.getParameter("EndDate");
+            Date endDate = Date.valueOf(request.getParameter("EndDate"));
             String major = request.getParameter("Major");
             Date d=new Date(System.currentTimeMillis());
-            JobDAO.createJobCompany(jobTitle, jobName, jobDescription, jobRequirement, amount, jobBenefits, jobSalary, d.toString(), endDate, com.getComID(), major,d.toString());
+            JobDAO.createJobCompany(jobTitle, jobName, jobDescription, jobRequirement, amount, jobBenefits, jobSalary, d, endDate, com.getComID(), major,d);
             request.getRequestDispatcher("CompanyHomePageController").forward(request, response);
         } catch (SQLException ex) {
             ex.printStackTrace();

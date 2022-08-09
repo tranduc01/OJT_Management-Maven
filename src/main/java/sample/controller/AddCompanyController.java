@@ -44,7 +44,7 @@ public class AddCompanyController extends HttpServlet {
             int role=2;
             String password="123";
             Date d=new Date(System.currentTimeMillis());
-            int result=AccountDAO.insertAccount(password, email, name, "", "", d.toString(), role, status);
+            int result=AccountDAO.insertAccount(password, email, name, "", Date.valueOf(""), d, role, status);
             AccountDTO acc=AccountDAO.loginAccount_V2(email);
             int result1=CompanyDAO.insertCompany(acc.getAccId());
             request.getRequestDispatcher("CompanyListController").forward(request, response);

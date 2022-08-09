@@ -385,7 +385,7 @@ public class AccountDAO {
         return result;
     }
 
-    public static int insertAccount(String password, String email, String name, String phone, String birthday, String createDate, int roleID, int status) throws SQLException {
+    public static int insertAccount(String password, String email, String name, String phone, Date birthday, Date createDate, int roleID, int status) throws SQLException {
         int result = 0;
         Connection cn = null;
         PreparedStatement pst = null;
@@ -398,8 +398,8 @@ public class AccountDAO {
                 pst.setString(2, email);
                 pst.setString(3, name);
                 pst.setString(4, phone);
-                pst.setString(5, birthday);
-                pst.setString(6, createDate);
+                pst.setDate(5, birthday);
+                pst.setDate(6, createDate);
                 pst.setInt(7, roleID);
                 pst.setInt(8, status);
                 pst.executeUpdate();

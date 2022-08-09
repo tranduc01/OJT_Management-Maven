@@ -7,6 +7,7 @@ package sample.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +45,7 @@ public class AddStudentController extends HttpServlet {
             String phone = request.getParameter("txtphone");
             String major = request.getParameter("txtmajor");
             String semester = request.getParameter("txtsemester");
-            String birthday = request.getParameter("txtdateofbirth");
+            Date birthday = Date.valueOf(request.getParameter("txtdateofbirth"));
             int role = 1;
             int status = 1;
             Date d = new Date(System.currentTimeMillis());
@@ -55,7 +56,7 @@ public class AddStudentController extends HttpServlet {
                 request.setAttribute("error", error);
                 request.getRequestDispatcher("AdminStudentController").forward(request, response);
             }else{
-            int result = AccountDAO.insertAccount(stuid, mail, name, phone, birthday, d.toString(), role, status);
+            int result = AccountDAO.insertAccount(stuid, mail, name, phone, birthday, d, role, status);
 
             ArrayList<AccountDTO> list1 = AccountDAO.getAccounts();
             for (AccountDTO account : list1) {

@@ -56,9 +56,9 @@ public class ImportStudentController extends HttpServlet {
             Part filePart = request.getPart("file");
             String fileName = filePart.getSubmittedFileName();
             for (Part part : request.getParts()) {
-                part.write("D:\\SWP391\\OJT_Management\\web\\Student\\" + fileName);
+                part.write("D:\\SWP391\\OJT_Management-Maven\\src\\main\\webapp\\Student\\" + fileName);
             }
-            String filePath = "D:\\SWP391\\OJT_Management\\web\\Student\\" + fileName;
+            String filePath = "D:\\SWP391\\OJT_Management-Maven\\src\\main\\webapp\\Student\\" + fileName;
             ArrayList<StudentDTO> list = readExcel(filePath);
             Date d = new Date(System.currentTimeMillis());
 
@@ -66,7 +66,7 @@ public class ImportStudentController extends HttpServlet {
             for (StudentDTO student : list) {
                 
                 if(student.getEmail()!=null){
-                int result = AccountDAO.insertAccount(student.getStudentID(), student.getEmail(), student.getStudentName(), null, null, d.toString(), role, status);
+                int result = AccountDAO.insertAccount(student.getStudentID(), student.getEmail(), student.getStudentName(), null, null, d, role, status);
                 }
                 }
             //insert Student
