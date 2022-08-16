@@ -251,7 +251,7 @@ public class JobDAO {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where comID=?\n"
-                        + "order by modifyDate desc";
+                        + "order by modifyDate asc";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, comID);
                 rs = pst.executeQuery();
@@ -400,7 +400,7 @@ public class JobDAO {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=?\n"
-                        +"order by modifyDate desc";
+                        +"order by modifyDate asc";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
                 rs = pst.executeQuery();
@@ -450,7 +450,7 @@ public class JobDAO {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=? and comID=?\n"
-                        +"order by modifyDate desc";
+                        +"order by modifyDate asc";
                 pst = cn.prepareStatement(sql);
                 pst.setInt(1, status);
                 pst.setInt(2, comID);
@@ -501,7 +501,7 @@ public class JobDAO {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
                         + "where job.status=1\n"
-                        + "order by jobCreateDate desc\n"
+                        + "order by jobCreateDate asc\n"
                         + "offset ((? -1)* ?) rows\n"
                         + "fetch next ? rows only";
                 PreparedStatement pst = cn.prepareStatement(sql);
@@ -554,7 +554,7 @@ public class JobDAO {
             if (cn != null) {
                 String sql = "select jobID,jobName,jobTitle,jobDescription,jobRequirements,jobBenefits,jobSalary,jobCreateDate,jobEndDate,status,amount,majorID,comID,modifyDate\n"
                         + "from Job\n"
-                        + "order by modifyDate desc\n"
+                        + "order by modifyDate asc\n"
                         + "offset ((? -1)* ?) rows\n"
                         + "fetch next ? rows only";
                 PreparedStatement pst = cn.prepareStatement(sql);

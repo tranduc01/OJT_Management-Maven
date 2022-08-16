@@ -149,7 +149,7 @@
                                                                 <div class="candidate-list-details">
                                                                     <div class="candidate-list-info">
                                                                         <div class="candidate-list-title">
-                                                                            <h5 class="mb-0" style="color: #0b7dda">${acc.getName()}</h5>
+                                                                            <h5 class="mb-0" style="color: #0b7dda">${job.getJobName()}</h5>
                                                                         </div>
                                                                         <div class="candidate-list-option">
                                                                             <ul class="list-unstyled">

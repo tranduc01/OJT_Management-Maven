@@ -50,12 +50,10 @@ public class JobsPostController extends HttpServlet {
             int pageIndex = Integer.parseInt(pagenumber);
             int numofrow = 10;
             ArrayList<JobDTO> listJob1 = JobDAO.getJobsPost(pageIndex, numofrow);
-            ArrayList<JobDTO> listJob = JobDAO.getJobs();
             ArrayList<CompanyDTO> listCompany = CompanyDAO.getCompanies();
             ArrayList<AccountDTO> listAccount=new ArrayList<>();
             ArrayList<MajorDTO> listMajor=MajorDAO.getMajors();
                 
-            int total=listJob.size()/10;
             for (CompanyDTO com : listCompany) {
                 AccountDTO account=AccountDAO.getAccountByID(com.getAccID());
                 if(account.getAccId()==com.getAccID()){
@@ -63,9 +61,7 @@ public class JobsPostController extends HttpServlet {
                 }
             }
             
-            
-            
-                request.setAttribute("totalPage", total);
+                       
                 request.setAttribute("companyList", listCompany);
                 request.setAttribute("jobList", listJob1);
                 request.setAttribute("accList", listAccount);

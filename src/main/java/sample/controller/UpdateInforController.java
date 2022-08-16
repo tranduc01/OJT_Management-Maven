@@ -5,22 +5,20 @@
  */
 package sample.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import sample.account.AccountDAO;
 import sample.account.AccountDTO;
 import sample.company.CompanyDAO;
 import sample.major.MajorDAO;
 import sample.major.MajorDTO;
-import sample.student.StudentDAO;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
